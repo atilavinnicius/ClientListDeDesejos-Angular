@@ -1,0 +1,57 @@
+<h1 class="mt-4">Usuarios</h1>
+  <ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item active">{{ usuario.id ? 'Edição' : 'Cadastro'}}</li>
+  </ol>
+  <div class="alert alert-success" *ngIf="success">
+    Salvo/Atualizado com sucesso!
+  </div><div class="alert alert-danger" *ngIf="erro">
+    Erro ao Salvar/Atualizar por favor verifique os campos.
+  </div>
+  <div class="container">
+    <form #usuarioForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="row" *ngIf="usuario.id" >
+        <div class="col-md-1">
+          <div class="form-group">
+          <label>ID: </label>
+          <input type="text" class="form-control"  disabled [ngModel]="usuario.id"  name="id">
+          </div>
+        </div>
+      </div> <!-- fim row-->
+      <div class="row">
+        <div class="col-md-9">
+          <div class="form-group">
+          <label>Nome: </label>
+          <input type="text" class="form-control" [(ngModel)]="usuario.nome" name="nome">
+          </div>
+      </div>
+        <div class="col-md-3">
+          <div class="form-group">
+          <label>Telefone: </label>
+          <input type="text" class="form-control" [(ngModel)]="usuario.telefone" name="telefone">
+          </div>
+        </div>
+      </div> <!-- fim row-->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+          <label>Email: </label>
+          <input type="email" class="form-control" [(ngModel)]="usuario.email" name="email">
+        </div>
+        </div> <!-- fim row -->
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-success" *ngIf="!usuario.id"><i class="fas fa-save"></i> &nbsp; Salvar</button>
+          <button type="submit" class="btn btn-primary" *ngIf="usuario.id"><i class="fas fa-sync-alt"></i> &nbsp; Atualizar</button>
+        </div>
+        <div class="col-md-3">
+        <button type="button" class="btn btn-danger ml-1" (click)="voltarParaListagem()">
+          <i class="fa fa-arrow-alt-circle-left"></i>
+          Voltar
+        </button>
+      </div>
+
+      </div> <!-- fim row-->
+    </form>
+  </div>

@@ -1,0 +1,68 @@
+<h1 class="mt-4">Usuários</h1>
+  <ol class="breadcrumb mb-4">
+       <li class="breadcrumb-item active">Lista de Usuários</li>
+  </ol>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <button class="btn btn-warning" (click)="novoCadastro()">
+          <i class="fa fa-plus"></i> Novo
+        </button>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-condensed tablet-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Telefone</th>
+            </tr>
+          </thead>
+          <tbody>
+                <tr *ngFor="let usuario of usuarios">
+                  <td>{{ usuario.id }}</td>
+                  <td>{{ usuario.nome }}</td>
+                  <td>{{ usuario.email }}</td>
+                  <td>{{ usuario.telefone}}</td>
+                  <td>
+                    <button class="btn btn-primary" routerLink="/usuarios-form/{{ usuario.id }}">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                    &nbsp;
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#modalDelecao"  (click)="prepararDelecao(this.usuario)">
+                      <i class="fa far fa-trash-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="modalDelecao" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Confirmação</h4>
+          </div>
+          <div class="modal-body" *ngIf="usuarioSelecionado">
+            Confirma a deleção do(a) Usuário {{ usuarioSelecionado.nome}}?
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btn-success"  data-dismiss="modal" (click)="deletarCliente()">Confirmar</button>
+            <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

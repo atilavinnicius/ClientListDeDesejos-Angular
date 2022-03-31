@@ -1,0 +1,70 @@
+<h1 class="mt-4">Desejo</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrubm-bitem active">Novo</li>
+</ol>
+<div class="container">
+  <form #form="ngForm" (submit)="onSubmit()">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf="success">
+          Desejo Salvo com sucesso!
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIF="error">
+            Erro ao salvar desejo confira os campos.
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="form-group">
+          <label for="">Usuário:</label>
+          <select class="form-control"
+          [ngModelOptions]="{standalone: true}"
+          [(ngModel)] ="desejo.usuario_id">
+            <option selected>Selecione</option>
+            <option *ngFor="let u of usuarios" [ngValue]="u.id">
+              {{u.nome}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="">Desejo</label>
+          <input type="text" class="form-control" [(ngModel)]= "desejo.nomeDesejo" name="desejo" id="inputDesejo" />
+        </div>
+      </div>
+    </div>
+     <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="">Descrição</label>
+          <textarea class="form-control" rows="5" [(ngModel)]= "desejo.descricao" name="descricao" id="inputDescricao"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="">Data</label>
+          <input type="date" class="form-control" [(ngModel)]= "desejo.dataPretendida" name="data" id="inputData" />
+        </div>
+      </div>
+    </div>
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-success">
+          <i class="fa fa-save"></i> Salvar
+        </button>
+        <button type="button" class="btn btn-danger ml-1" routerLink="/desejos">
+          <i class="fa fa-arrow-alt-circle-left"></i>
+          Voltar
+        </button>
+      </div>
+  </form>
+</div>

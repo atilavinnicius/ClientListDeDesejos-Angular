@@ -1,0 +1,68 @@
+<h1 class="mt-4">Lista de Desejos</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrubm-bitem active">DESEJOS</li>
+</ol>
+<div class="container">
+  <form #consultaForm="ngForm" (submit)="filtrar()">
+    <div class="row">
+      <div class="col-md-4">
+        <label for="inputNome">Desejo</label>
+        <input type="text" [(ngModel)]="nome" name="nome" id="inputNome" class="form-control">
+      </div>
+
+      <div class="col-md-4">
+        <label for="inputusuario_id">Usuario ID</label>
+        <input type="text" [(ngModel)]="usuario_id" name="usuario_id" id="inputusuario_id" class="form-control">
+      </div>
+
+      <div class="col-md-4">
+        <label for="inputdataPretendida">Data</label>
+        <input type="date" [(ngModel)]="dataPretendida" name="nome" id="inputdataPretendida" class="form-control">
+      </div>
+    </div>
+<br>
+    <div class="row">
+      <div class="col-md-3">
+        <button type="button"  routerLink="/desejos-form" class="btn btn-warning">
+          <i class="fa fa-plus"></i>
+          Novo
+        </button>
+        &nbsp;
+        <button type="submit" class="btn btn-primary">
+          <i class="fa fa-search"></i>
+          Filtrar
+        </button>
+
+      </div>
+    </div>
+  </form>
+
+  <br>
+  <div class="row">
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Desejo</th>
+            <th>Descrição</th>
+            <th>Data</th>
+            <th>Usuario ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of desejos">
+            <td> {{ d.id }}</td>
+            <td> {{ d.desejo }}</td>
+            <td> {{ d.descricao }}</td>
+            <td> {{ d.dataPretendida }}</td>
+            <td> {{ d.usuario_id }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
